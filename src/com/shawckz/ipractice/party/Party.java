@@ -5,7 +5,8 @@ import com.shawckz.ipractice.ladder.Ladder;
 import com.shawckz.ipractice.player.IPlayer;
 import com.shawckz.ipractice.player.PlayerState;
 import lombok.*;
-import mkremins.fanciful.FancyMessage;
+import net.mkremins.fanciful.FancyMessage;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

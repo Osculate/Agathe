@@ -193,7 +193,6 @@ public class IPlayer extends CachePlayer {
         scoreboard.update();
         handlePlayerVisibility();
         NametagManager.getPlayer(player).reset();
-        player.spigot().setCollidesWithEntities(true);
         for(Player pl : Bukkit.getOnlinePlayers()){
             if(pl.canSee(player)){
                 NametagManager.getPlayer(pl).setPlayerNametag(NametagManager.getPlayer(player), Match.NORMAL);
@@ -220,8 +219,8 @@ public class IPlayer extends CachePlayer {
         for(PotionEffect po : player.getActivePotionEffects()) {
             player.removePotionEffect(po.getType());
         }
+        
         player.getActivePotionEffects().clear();
-
         player.getInventory().clear();
         player.getInventory().setHelmet(null);
         player.getInventory().setChestplate(null);
@@ -229,7 +228,6 @@ public class IPlayer extends CachePlayer {
         player.getInventory().setBoots(null);
         Practice.getSpawn().giveItems(this);
         player.updateInventory();
-        player.spigot().setCollidesWithEntities(false);
         handlePlayerVisibility();
     }
 
@@ -251,12 +249,10 @@ public class IPlayer extends CachePlayer {
             player.setFoodLevel(20);
             for(PotionEffect po : player.getActivePotionEffects())
                 player.removePotionEffect(po.getType());
-
             player.getInventory().setHelmet(kit.getArmor()[3]);
             player.getInventory().setChestplate(kit.getArmor()[2]);
             player.getInventory().setLeggings(kit.getArmor()[1]);
             player.getInventory().setBoots(kit.getArmor()[0]);
-
             player.getInventory().setContents(kit.getInventory());
         }
         else {

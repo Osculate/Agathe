@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import mkremins.fanciful.FancyMessage;
+import net.mkremins.fanciful.FancyMessage;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

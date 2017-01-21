@@ -59,16 +59,15 @@ public class Practice extends JavaPlugin {
         eventManager = new EventManager(this);
         queueManager = new QueueManager(this);
         queueManager.run();
-        Ladder.loadLadders(this);
         worldEdit = (WorldEditPlugin) getServer().getPluginManager().getPlugin("WorldEdit");
-
+        taskAutoSave = new TaskAutoSave();
+        Ladder.loadLadders(this);
         getServer().getPluginManager().registerEvents(new KitInvClose(), this);
         getServer().getPluginManager().registerEvents(new WorldListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(),this);
         getServer().getPluginManager().registerEvents(new PartiesInv(),this);
         getServer().getPluginManager().registerEvents(new StaffModeListener(), this);
         getServer().getPluginManager().registerEvents(new Soup(), this);
-        taskAutoSave = new TaskAutoSave();
         getServer().getScheduler().runTaskTimerAsynchronously(this, taskAutoSave, 15000, 15000);
         getServer().getScheduler().runTaskTimer(this, new TaskClearEntities(), 600, 600);
     }
@@ -79,13 +78,14 @@ public class Practice extends JavaPlugin {
         if(!eventManager.canStartEvent()){
             eventManager.endEvent();
         }
+        
         for(Player pl : Bukkit.getOnlinePlayers()){
             if(queueManager.inQueue(Practice.getCache().getIPlayer(pl))){
                 queueManager.removeFromQueue(Practice.getCache().getIPlayer(pl));
             }
-            //IPlayer ip = getCache().getIPlayer(pl);
-            //ip.update();
-            // -- Handled by TaskAutoSave ^^
+            
+            IPlayer ip = getCache().getIPlayer(pl);
+            ip.update();
         }
 
         cache.clearCache();

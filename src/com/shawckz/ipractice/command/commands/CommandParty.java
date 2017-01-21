@@ -7,7 +7,9 @@ import com.shawckz.ipractice.command.ICommand;
 import com.shawckz.ipractice.party.Party;
 import com.shawckz.ipractice.player.IPlayer;
 import com.shawckz.ipractice.player.PlayerState;
-import mkremins.fanciful.FancyMessage;
+
+import net.mkremins.fanciful.FancyMessage;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

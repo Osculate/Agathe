@@ -21,7 +21,7 @@ import com.shawckz.ipractice.util.nametag.Nametag;
 import com.shawckz.ipractice.util.nametag.NametagManager;
 import lombok.Getter;
 import lombok.Setter;
-import mkremins.fanciful.FancyMessage;
+import net.mkremins.fanciful.FancyMessage;
 
 import java.util.HashMap;
 import java.util.Map;

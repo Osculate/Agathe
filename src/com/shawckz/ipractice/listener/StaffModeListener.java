@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -145,22 +146,18 @@ public class StaffModeListener implements Listener {
 
     private void openInspectInventory(Player player, Player target){
         Inventory inv = Bukkit.createInventory(null, 54, ChatColor.BLUE+"Inspect: "+target.getName());
-
         for(int i = 0; i < target.getInventory().getContents().length; i++){
             inv.setItem(i, target.getInventory().getContents()[i]);
         }
-
+		Damageable t = target;
+        double hp = t.getHealth();
+        
         inv.setItem(45, target.getInventory().getHelmet());
         inv.setItem(46, target.getInventory().getChestplate());
         inv.setItem(47, target.getInventory().getLeggings());
         inv.setItem(48, target.getInventory().getBoots());
-
-        inv.setItem(52, new ItemBuilder(Material.COOKED_BEEF).name(ChatColor.GOLD + "Hunger: "+
-                ChatColor.AQUA+Math.round(target.getFoodLevel())).build());
-
-        inv.setItem(53, new ItemBuilder(new ItemStack(Material.INK_SACK, 1, DyeColor.RED.getDyeData())).name(ChatColor.GOLD +
-                "Health: "+ChatColor.AQUA+Math.round(target.getHealth())).build());
-
+        inv.setItem(52, new ItemBuilder(Material.COOKED_BEEF).name(ChatColor.GOLD + "Hunger: " + ChatColor.AQUA + Math.round(target.getFoodLevel())).build());
+        inv.setItem(53, new ItemBuilder(new ItemStack(Material.INK_SACK, 1, DyeColor.RED.getDyeData())).name(ChatColor.GOLD + "Health: " + ChatColor.AQUA + Math.round(t.getHealth())).build());
         player.openInventory(inv);
     }
 
@@ -176,5 +173,4 @@ public class StaffModeListener implements Listener {
             }
         }
     }
-
 }
