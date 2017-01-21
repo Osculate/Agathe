@@ -1,9 +1,8 @@
-name: iPractice
-main: com.shawckz.ipractice.Practice
-version: 1.0.0
+name: Agathe
+main: net.rhian.agathe.Agathe
+version: v1.0-Pre-Release
 author: Shawckz
-description: The iPractice plugin, made for the iPvP.org Network by Shawckz
-website: http://shawckz.com
+description: Fork of iPractice
 depend: [WorldEdit]
 
 commands:
